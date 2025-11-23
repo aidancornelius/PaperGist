@@ -1,0 +1,181 @@
+name: PaperGist
+
+options:
+  bundleIdPrefix: com.cornelius-bell
+  deploymentTarget:
+    iOS: "26.0"
+  developmentLanguage: en
+  createIntermediateGroups: true
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "3108"
+    ENABLE_HARDENED_RUNTIME: NO
+    DEVELOPMENT_TEAM: HK6R36PLNR
+    ENABLE_USER_SCRIPT_SANDBOXING: YES
+    ASSETCATALOG_COMPILER_GENERATE_SWIFT_APPINTENTS_METADATA: YES
+  configs:
+    Debug:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG
+    Release:
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: ""
+
+targets:
+  PaperGist:
+    type: application
+    platform: iOS
+    sources:
+      - path: PaperGist
+        excludes:
+          - "**/*.md"
+          - "**/Info.plist"
+          - "PaperGistTests"
+    info:
+      path: PaperGist/Resources/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        ITSAppUsesNonExemptEncryption: false
+        LSApplicationCategoryType: public.app-category.productivity
+        LSRequiresIPhoneOS: true
+        UILaunchStoryboardName: LaunchScreen
+        UIRequiresPersistentWiFi: false
+        UIStatusBarHidden: false
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+        NSSupportsLiveActivities: true
+        NSSupportsLiveActivitiesFrequentUpdates: true
+        NSUserActivityTypes:
+          - com.cornelius-bell.PaperGist.live-activity
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.cornelius-bell.PaperGist.summarize
+        CFBundleURLTypes:
+          - CFBundleTypeRole: Editor
+            CFBundleURLName: com.cornelius-bell.PaperGist
+            CFBundleURLSchemes:
+              - papergist
+        UIAppFonts:
+          - SourceSans3-Regular.ttf
+          - SourceSans3-Italic.ttf
+          - SourceSans3-Light.ttf
+          - SourceSans3-LightItalic.ttf
+          - SourceSans3-Medium.ttf
+          - SourceSans3-MediumItalic.ttf
+          - SourceSans3-SemiBold.ttf
+          - SourceSans3-SemiBoldItalic.ttf
+          - SourceSans3-Bold.ttf
+          - SourceSans3-BoldItalic.ttf
+          - SourceSans3-ExtraBold.ttf
+          - SourceSans3-ExtraBoldItalic.ttf
+          - SourceSans3-Black.ttf
+          - SourceSans3-BlackItalic.ttf
+          - SourceSans3-ExtraLight.ttf
+          - SourceSans3-ExtraLightItalic.ttf
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.cornelius-bell.PaperGist
+        INFOPLIST_FILE: PaperGist/Resources/Info.plist
+        CODE_SIGN_ENTITLEMENTS: PaperGist/PaperGist.entitlements
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_OTHER_FLAGS: --enable-icon-stack-fallback-generation=disabled
+        ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+        ENABLE_PREVIEWS: YES
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks"
+        SUPPORTS_MACCATALYST: YES
+        TARGETED_DEVICE_FAMILY: "1,2,6"
+    dependencies:
+      - target: PaperGistWidgets
+        embed: true
+
+  PaperGistWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: PaperGistWidgets
+    info:
+      path: PaperGistWidgets/Info.plist
+      properties:
+        CFBundleDisplayName: PaperGist Widgets
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+        UIAppFonts:
+          - SourceSans3-Regular.ttf
+          - SourceSans3-Italic.ttf
+          - SourceSans3-Light.ttf
+          - SourceSans3-LightItalic.ttf
+          - SourceSans3-Medium.ttf
+          - SourceSans3-MediumItalic.ttf
+          - SourceSans3-SemiBold.ttf
+          - SourceSans3-SemiBoldItalic.ttf
+          - SourceSans3-Bold.ttf
+          - SourceSans3-BoldItalic.ttf
+          - SourceSans3-ExtraBold.ttf
+          - SourceSans3-ExtraBoldItalic.ttf
+          - SourceSans3-Black.ttf
+          - SourceSans3-BlackItalic.ttf
+          - SourceSans3-ExtraLight.ttf
+          - SourceSans3-ExtraLightItalic.ttf
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.cornelius-bell.PaperGist.Widgets
+        CODE_SIGN_ENTITLEMENTS: PaperGistWidgets/PaperGistWidgets.entitlements
+        INFOPLIST_FILE: PaperGistWidgets/Info.plist
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
+        SWIFT_EMIT_LOC_STRINGS: YES
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks"
+        SKIP_INSTALL: YES
+
+  PaperGistTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: PaperGistTests
+        excludes:
+          - "**/*.md"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.cornelius-bell.PaperGistTests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/PaperGist.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PaperGist"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        LD_RUNPATH_SEARCH_PATHS: "$(inherited) @executable_path/Frameworks @loader_path/Frameworks"
+        GENERATE_INFOPLIST_FILE: YES
+    dependencies:
+      - target: PaperGist
+
+schemes:
+  PaperGist:
+    build:
+      targets:
+        PaperGist: all
+        PaperGistWidgets: all
+        PaperGistTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      gatherCoverageData: true
+      coverageTargets:
+        - PaperGist
+      targets:
+        - name: PaperGistTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

@@ -1,0 +1,24 @@
+# Xcode
+*.xcodeproj
+*.xcworkspace
+!*.xcworkspace/contents.xcworkspacedata
+*.xcuserdatad
+xcuserdata/
+*.moved-aside
+DerivedData/
+.DS_Store
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.swiftpm/
+.build/
+
+# CocoaPods
+Pods/
+
+# Credentials (if you want to protect them)
+# Uncomment the following line if you want to keep credentials out of git:
+PaperGist/Utilities/ZoteroConfig.swift
