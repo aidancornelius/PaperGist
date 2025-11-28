@@ -130,6 +130,20 @@ struct SettingsView: View {
                         Label("Sign out", systemImage: "arrow.right.square")
                             .foregroundStyle(Color.terracotta)
                     }
+
+                    Divider()
+                        .padding(.top, 8)
+
+                    Link(destination: URL(string: "https://www.zotero.org/settings/deleteaccount")!) {
+                        HStack {
+                            Text("Delete Zotero account")
+                            Spacer()
+                            Image(systemName: "arrow.up.right.square")
+                        }
+                        .foregroundStyle(Color(red: 0.6, green: 0.4, blue: 0.4))
+                        .font(.subheadline)
+                    }
+                    .padding(.top, 4)
                 }
             } else {
                 HStack {
